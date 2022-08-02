@@ -4,8 +4,8 @@ package com.vet.vetapp.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,7 +18,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Table(name = "users")
-public class Users implements Serializable, UserDetails {
+public class Users implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,8 +34,8 @@ public class Users implements Serializable, UserDetails {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "pet_id")
+
+    @OneToMany(mappedBy = "users", fetch = FetchType.EAGER)
     private List<UserPet> userPets;
 
     public Users (Long id, String firstName, String lastName, String login, String password, String email, List<UserPet> userPets) {
@@ -47,34 +47,35 @@ public class Users implements Serializable, UserDetails {
         this.email = email;
         this.userPets = userPets;
     }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities () {
-        return null;
-    }
-
-    @Override
-    public String getUsername () {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired () {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked () {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired () {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled () {
-        return false;
-    }
 }
+
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities () {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getUsername () {
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired () {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked () {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired () {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean isEnabled () {
+//        return false;
+//    }
+//}

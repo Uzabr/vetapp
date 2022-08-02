@@ -24,11 +24,12 @@ public class UserPet {
     @Column(name = "birth_date")
     private Date birthDate;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private Users users;
 
-    @OneToOne(mappedBy = "userPet")
-    @JoinColumn(name = "animal_id")
+    @OneToOne
+//    @JoinColumn(name = "animal_id")
     private Animals animals;
 
 

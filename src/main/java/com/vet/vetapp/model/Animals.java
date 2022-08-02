@@ -26,7 +26,7 @@ public class Animals {
 
     @Column(name = "type")
     private String typeOfAnimal;
-    @OneToOne
+    @OneToOne(mappedBy = "animals")
     private UserPet userPet;
 
     public Animals (Long id, String sexOfAnimal, String breedOfAnimal, String typeOfAnimal, UserPet userPet) {
